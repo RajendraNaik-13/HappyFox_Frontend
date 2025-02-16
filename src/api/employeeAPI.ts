@@ -1,4 +1,3 @@
-// api/employeeApi.ts
 import { Employee } from '../types';
 
 const API_URL = '/api/employees';

@@ -2,11 +2,11 @@ import { Employee } from '../types';
 
 export const checkForCircularReference = (
   employees: Employee[],
-  draggedId: number,
-  targetId: number
+  draggedId: string,  
+  targetId: string    
 ): boolean => {
-  const wouldCreateCycle = (empId: number, targetId: number): boolean => {
-    let current: number | null = targetId;
+  const wouldCreateCycle = (empId: string, targetId: string): boolean => {
+    let current: string | null = targetId;
     while (current !== null) {
       if (current === empId) return true;
       const manager = employees.find(e => e.id === current);

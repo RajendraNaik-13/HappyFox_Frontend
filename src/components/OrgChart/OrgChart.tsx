@@ -8,6 +8,8 @@ import { Employee } from '../../types';
 export const OrgChart: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [draggedEmployee, setDraggedEmployee] = useState<Employee | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>(''); 
+  const [selectedTeam, setSelectedTeam] = useState<string>(''); 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,7 +64,7 @@ export const OrgChart: React.FC = () => {
     setDraggedEmployee(null);
   };
 
-  const handleDelete = async (employeeId: number) => {
+  const handleDelete = async (employeeId: string) => {
     try {
       await deleteEmployee(employeeId);
       setEmployees(prevEmployees =>
@@ -87,6 +89,10 @@ export const OrgChart: React.FC = () => {
       <Sidebar 
         employees={employees} 
         onDragStart={handleDragStart}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        selectedTeam={selectedTeam}
+        setSelectedTeam={setSelectedTeam}
       />
       <TreeStructure
         employees={employees}
