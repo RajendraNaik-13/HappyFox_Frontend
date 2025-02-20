@@ -1,6 +1,7 @@
 import { createServer, Model, Response } from 'miragejs';
 
 export function makeServer({ environment = 'development' } = {}) {
+  console.log("MirageJS server starting...");
   return createServer({
     environment,
 
@@ -9,6 +10,7 @@ export function makeServer({ environment = 'development' } = {}) {
     },
 
     seeds(server) {
+      console.log("Seeding employees...");
       server.create('employee', { id: "1", name: 'John Doe', role: 'CEO', managerId: null, team: 'Management', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1gwnoTIVRKLLYJNMJePOJCS2AYBHhmv5kDg&s' });
       server.create('employee', { id: "2", name: 'Alice Smith', role: 'CTO', managerId: "1", team: 'Tech', image: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg' });
       server.create('employee', { id: "3", name: 'Bob Johnson', role: 'Engineering Manager', managerId: "2", team: 'Tech', image: 'https://media.istockphoto.com/id/1410538853/photo/young-man-in-the-public-park.jpg?s=612x612&w=0&k=20&c=EtRJGnNOFPJ2HniBSLWKzsL9Xf7GHinHd5y2Tx3da0E=' });
